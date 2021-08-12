@@ -3,10 +3,10 @@ from cipher import Cipher
 class Menu:
    
     # Initiate variables for user input (+ cipherText)
-    plainText = ''
-    key = ''
-    offset = ''
-    cipherText = ''
+    global plainText; plainText = ''
+    global key; key = ''
+    global offset; offset = ''
+    global cipherText; cipherText = ''
     
     
     # Function to start the interactive menu and keep it alive until manually quit by the user
@@ -56,9 +56,17 @@ class Menu:
     
     # Ask the user to input an encryption key ( = the number of rows) and offset ( = the starting row)        
     def enterKey(self):
-        global key; key = int(raw_input('Enter Rail Fence Key >'))
-        global offset; offset = int(raw_input('Enter Offset >'))
-        print('')
+        try:
+            global key; key = int(raw_input('Enter Rail Fence Key >'))
+            global offset; offset = int(raw_input('Enter Offset >'))
+            print('')
+            # Encure offset isn't greater than encryption key
+            if offset >= key-1:
+                print('[ERROR] Max possible offset allowed for an encryption key of ' + str(key) + ' is ' + str(key-2) + '!')
+                self.enterKey()
+        except ValueError:
+            print('[ERROR] Please enter numeric values for the encryption key and offset!')
+            self.enterKey()
     
     
     # Call the encryption function and pass in all user input
