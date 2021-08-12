@@ -1,5 +1,6 @@
-from Menu import go
+from menu import Menu
 
-# Call the function go -> starts the application
-go()
+class Runner:
 
+    # Call the function go -> starts the application
+    Menu().go()
