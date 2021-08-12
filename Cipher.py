@@ -27,6 +27,7 @@ def doCipher(s, key, offset, encrypt):
     
     # Loop through each char in the string passed in by the user
     # Place the char into the current index of the matrix
+    # Builds the matrix by creating a rail fence pattern
     for let in s: 
         matrix[row][col] = let
         
@@ -43,63 +44,94 @@ def doCipher(s, key, offset, encrypt):
         if row == 0 or row == key - 1:
             moveDown = not(moveDown)
             
-    c = 0
+    # Initiate empty array for encrypted message
     res = []
-            
+    
+    # If boolean passed in = True -> Encrypt
     if encrypt == True:
+        # Loop though each row
         i = 0
         while i < key:
+            # Loop through each column
             j = 0
             while j < len(s):
+                # Check whether there is a char at each index
+                # If so, append to array
                 if matrix[i][j] != 0:
                     res.append(matrix[i][j])
                 j += 1
             i += 1
-    
+        
+        # Initiate empty string for encrypted message
+        # Loop through char array and append each char to string
         cipherText = ''
         for x in res:
             cipherText += x
-        
+            
+        # Return string = encrypted message
         return cipherText
-        
+    
+    # If boolean passed in = False -> Decrypt
     else:
+        # Loop through each row
         i = 0
         while i < key:
+            # Loop through each column
             j = 0
             while j < len(s):
+                # Initiate variable to track index of passed in message
+                c = 0
+                # Check whether there is a char at each index
+                # If so, replace it with the char at the current index of the encrypted message
                 if matrix[i][j] != 0:
                     matrix[i][j] = s[c]
                     c += 1
                 j += 1
             i += 1
         
+        # Loop through each column
         i = 0
         while i < len(s):
+            # Loop through each row
             j = 0
             while j < key:
+                # Check whether there is a char at each index
+                # If so, append to array
                 if matrix[j][i] != 0:
                     res.append(matrix[j][i])
                 j += 1
             i += 1
-    
+            
+        # Initiate empty string for decrypted message
+        # Loop through char array and append each char to string
         decrypText = ''
         for x in res:
             decrypText += x
         
+        # Return string = decrypted message
         return decrypText
 
-    
+# Function to display the rail fence pattern created for the matrix
 def showCipher():
+    
+    # Loop through each row
     for rows in matrix:
+        
+        # Initiate an empty array and string for output
         temp = []
         railFence = ''
         
+        # Loop though each column in each row
         for col in rows:
+            # If there is a 0 at the index, replace it with a space
             if col == 0:
                 temp.append(' ')
+            # If there is a char at the index, append it to the char array 
             else:
                 temp.append(col)
+        # Loop through the char array and append each char to the string
         for x in temp:
             railFence += x
         
+        # Print the string, creating the rail fence pattern
         print(railFence)
