@@ -12,8 +12,7 @@ def decrypt(cipherText, key, offset):
 
 # Main encryption function
 def doCipher(s, key, offset, encrypt):
-    
-    # Initiate the encryption matrix, ie. the Rail Fence
+    # Initiate the encryption matrix, ie. the rail fence
     global matrix
     matrix = [[0 for i in range(len(s))]
                   for j in range(key)]
@@ -73,14 +72,14 @@ def doCipher(s, key, offset, encrypt):
     
     # If boolean passed in = False -> Decrypt
     else:
+        # Initiate variable to track index of passed in message
+        c = 0
         # Loop through each row
         i = 0
         while i < key:
             # Loop through each column
             j = 0
             while j < len(s):
-                # Initiate variable to track index of passed in message
-                c = 0
                 # Check whether there is a char at each index
                 # If so, replace it with the char at the current index of the encrypted message
                 if matrix[i][j] != 0:
@@ -111,6 +110,7 @@ def doCipher(s, key, offset, encrypt):
         # Return string = decrypted message
         return decrypText
 
+
 # Function to display the rail fence pattern created for the matrix
 def showCipher():
     
@@ -123,7 +123,7 @@ def showCipher():
         
         # Loop though each column in each row
         for col in rows:
-            # If there is a 0 at the index, replace it with a space
+            # If there is nothing at the index, replace it with a space
             if col == 0:
                 temp.append(' ')
             # If there is a char at the index, append it to the char array 
