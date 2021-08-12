@@ -2,7 +2,7 @@ from cipher import Cipher
  
 class Menu:
    
-    # Initiate variables for user input (+ cipherText)
+    # Initialise variables for user input (+ cipherText)
     global plainText; plainText = ''
     global key; key = ''
     global offset; offset = ''
@@ -60,7 +60,7 @@ class Menu:
             global key; key = int(raw_input('Enter Rail Fence Key >'))
             global offset; offset = int(raw_input('Enter Offset >'))
             print('')
-            # Encure offset isn't greater than encryption key
+            # Ensure offset isn't greater than encryption key
             if offset >= key-1:
                 print('[ERROR] Max possible offset allowed for an encryption key of ' + str(key) + ' is ' + str(key-2) + '!')
                 self.enterKey()

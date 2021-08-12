@@ -14,15 +14,15 @@ class Cipher:
     
     # Main encryption function
     def doCipher(self, s, key, offset, encrypt):
-        # Initiate the encryption matrix, ie. the rail fence
+        # Initialise the encryption matrix, ie. the rail fence
         global matrix
         matrix = [[0 for i in range(len(s))]
                       for j in range(key)]
         
-        # Initiate variable to control whether to move up or down a row
+        # Initialise variable to control whether to move up or down a row
         moveDown = True
         
-        # Initiate starting row and column, row is set to offset passed in by user
+        # Initialise starting row and column, row is set to offset passed in by user
         row = offset
         col = 0
         
@@ -45,7 +45,7 @@ class Cipher:
             if row == 0 or row == key - 1:
                 moveDown = not(moveDown)
                 
-        # Initiate empty array for encrypted message
+        # Initialise empty array for encrypted message
         res = []
         
         # If boolean passed in = True -> Encrypt
@@ -63,7 +63,7 @@ class Cipher:
                     j += 1
                 i += 1
             
-            # Initiate empty string for encrypted message
+            # Initialise empty string for encrypted message
             # Loop through char array and append each char to string
             cipherText = ''
             for x in res:
@@ -74,7 +74,7 @@ class Cipher:
         
         # If boolean passed in = False -> Decrypt
         else:
-            # Initiate variable to track index of passed in message
+            # Initialise variable to track index of passed in message
             c = 0
             # Loop through each row
             i = 0
@@ -103,7 +103,7 @@ class Cipher:
                     j += 1
                 i += 1
                 
-            # Initiate empty string for decrypted message
+            # Initialise empty string for decrypted message
             # Loop through char array and append each char to string
             decrypText = ''
             for x in res:
@@ -119,7 +119,7 @@ class Cipher:
         # Loop through each row
         for rows in matrix:
             
-            # Initiate an empty array and string for output
+            # Initialise an empty array and string for output
             temp = []
             railFence = ''
             
